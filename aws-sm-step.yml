@@ -3,80 +3,8 @@ kind: step-type
 metadata:
   name: pmomaxime/aws-secrets-manager
   isPublic: false
-  description: >-
-    The plugin imports KV secrets values from AWS Secrets Manager to Codefresh pipeline ENV
-    variables
-  sources:
-    - 'https://github.com/pathmotion/aws-secrets-manager-codefresh-step'
   stage: incubating
-  maintainers:
-    - name: Maxime Lebastard
-    - name: Matthieu Guigon
-    - name: Raphaël Antonmattei
-  categories:
-    - featured
-  official: false
-  tags: []
   icon:
     type: image
     url: 'https://d3kldfg85r0q5q.cloudfront.net/f5955a2f5618a75a974b7a7caf6370ce2692f950/images/favicon.png'
     background: '#f4f4f4'
-  examples:
-    - description: example-1
-      workflow:
-        version: '1.0'
-        steps:
-          AwsSM_to_Env:
-            title: Importing AWS Secret Manager values
-            type: aws-sm
-            arguments:
-              AWS_REGION: '${{AWSSM_REGION}}'
-              SECRET_NAME: '${{AWSSM_SECRET_NAME}}'
-              KEY_ID: '${{AWSSM_KEY_ID}}'
-              ACCESS_KEY: '${{AWSSM_ACCESS_KEY}}'
-  created_at: '2019-07-11T14:00:00.000Z'
-  updated_at: '2019-07-11T14:20:00.000Z'
-  id: 7955a7a54bafefcd975b5a3cda1cba83
-spec:
-  arguments: |-
-    {
-        "definitions": {},
-        "$schema": "http://json-schema.org/draft-07/schema#",
-        "type": "object",
-        "additionalProperties": false,
-        "patterns": [],
-        "required": [
-          "AWS_REGION",
-          "SECRET_NAME",
-          "KEY_ID",
-          "ACCESS_KEY"
-        ],
-        "properties": {
-            "AWS_REGION": {
-                "type": "string",
-                "description": "AWS region. Example: us-east-2 (required)"
-            },
-            "SECRET_NAME": {
-                "type": "string",
-                "description": "Name of the AWS Secret Manager secret. Example: secret/codefreshsecret (required)"
-            },
-            "KEY_ID": {
-                "type": "string",
-                "description": "AWS API secret key id"
-            },
-            "ACCESS_KEY": {
-                "type": "string",
-                "description": "AWS API secret access key"
-            }
-        }
-    }
-  steps:
-    main:
-      name: aws-secrets-manager
-      image: pathmotion/aws-secrets-codefresh
-      environment:
-        - 'AWS_REGION=${{AWS_REGION}}'
-        - 'SECRET_NAME=${{SECRET_NAME}}'
-        - 'KEY_ID=${{KEY_ID}}'
-        - 'ACCESS_KEY=${{ACCESS_KEY}}'
-
